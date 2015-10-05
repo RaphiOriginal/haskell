@@ -48,8 +48,9 @@ flipH e = reverse e
 -- b) Mirrors the given picture vertically.
 -- hint = "Wrqr Mrvyr zhff frcneng hztrxrueg jreqra."
 flipV :: Picture -> Picture
-flipV [] = []
-flipV (x:xs) = [reverse x] ++ (flipV xs)
+--flipV [] = []
+--flipV (x:xs) = [reverse x] ++ (flipV xs)
+flipV p = map reverse p
 
 
 -- c) Takes two pictures and puts the first above the second.
@@ -60,8 +61,9 @@ above a b = a ++ b
 -- d) Takes two pictures and puts the first left of the second.
 -- hint = "Irejraqra Fvr qvr Shaxgvba mvcJvgu hz wr mjrv Mrvyra mh xbaxngravrera."
 beside :: Picture -> Picture -> Picture
-beside [] [] = []
-beside (x:xs) (y:ys) = [(x ++ y)] ++ (beside xs ys)
+--beside [] [] = []
+--beside (x:xs) (y:ys) = [(x ++ y)] ++ (beside xs ys)
+beside p1 p2 = zipWith (++) p1 p2
 
 --------------------------------------------------------------------------------
 -- 2) Functions on Lists
@@ -73,12 +75,17 @@ append a b = a ++ [b]
 
 -- b) Reverse all but the first and the last element.
 reverse2 :: [a] -> [a]
-reverse2 (x:xs) = x : (reverse (init xs)) ++ [(last xs)]
+reverse2 (x:xs) = x : reverse (init xs) ++ [last xs]
 
 -- c) Insert an element at a given position.
-put :: Int -> [a] -> a -> [a]
-put n a b = (take n a) ++ [b] ++ (drop n a)
+ins :: Int -> [a] -> a -> [a]
+ins n a b = take n a ++ [b] ++ drop n a
 
+{-
+ins2 :: Int -> [a] -> a -> [a]
+ins2 a n as = start ++ [a] ++ end
+    where (start, end) = splitAt n as
+-}
 
 -- Functions to decode hints.
 -- Usage: decodeHint "Mhrefg anpuqraxra, qnaa Gvccf nafpunhra =)"
