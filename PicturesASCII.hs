@@ -73,7 +73,7 @@ append a b = a ++ [b]
 
 -- b) Reverse all but the first and the last element.
 reverse2 :: [a] -> [a]
-reverse2 (x:xs) =  [x] ++ (reverse (init xs)) ++ [(last xs)]
+reverse2 (x:xs) = x : (reverse (init xs)) ++ [(last xs)]
 
 -- c) Insert an element at a given position.
 put :: Int -> [a] -> a -> [a]
