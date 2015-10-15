@@ -47,21 +47,21 @@ type M22 = ((Int, Int), (Int, Int))
 
 --add
 add :: M22 -> M22 -> M22
-add (a1, b1) (a2, b2) = ((addTouples a1 a2), (addTouples b1 b2))
+add (a1, b1) (a2, b2) = (addTouples a1 a2, addTouples b1 b2)
 
 addTouples :: (Int, Int) -> (Int, Int) -> (Int, Int)
 addTouples (x, y) (a, b) = (x + a, y + b)
 
 --sub
 sub :: M22 -> M22 -> M22
-sub (a1, b1) (a2, b2) = ((subTouples a1 a2), (subTouples b1 b2))
+sub (a1, b1) (a2, b2) = (subTouples a1 a2, subTouples b1 b2)
 
 subTouples :: (Int, Int) -> (Int, Int) -> (Int, Int)
 subTouples (x, y) (a, b) = (x - a, y - b)
 
 --mulS
 mulS :: M22 -> Int -> M22
-mulS (a, b) s = ((mulSTouple a s), (mulSTouple b s))
+mulS (a, b) s = (mulSTouple a s, mulSTouple b s)
 
 mulSTouple :: (Int, Int) -> Int -> (Int, Int)
 mulSTouple (a, b) s = (a * s, b * s)
