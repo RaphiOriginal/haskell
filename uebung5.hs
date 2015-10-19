@@ -42,6 +42,10 @@ g.f
 f.h
 i.g
 g.h
+h.f
+h.g
+h.h
+h.i
 -}
 
 --b)
