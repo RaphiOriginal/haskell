@@ -15,12 +15,12 @@ Präzendenz : Operator
 -}
 --b)
 -- ((((1 + (2 ^ 3)) == 6) && ((3 / 4) < 12)) || (snd(1, True)))
--- (((3:) []) == (map (*5)[(2 ^ (4 ^ 6))]))
+-- (((3:) []) == ((map (*5))[(2 ^ (4 ^ 6))]))
 
 -- Aufgabe 2
 --a)
 curry1 :: ((a,b) -> c) -> a -> b -> c
-curry1 f a b = f(a,b)
+curry1 f a b = f (a,b)
 
 --b)
 uncurry1 :: (a -> b -> c) -> (a,b) -> c
