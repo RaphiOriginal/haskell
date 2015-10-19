@@ -42,4 +42,26 @@ alternate x [] = x
 alternate [] x = x
 alternate (x:xs) (y:ys) = x : y : alternate xs ys
 
--- Aufgabe 4
+-- Aufgabe 4 (optional)
+{-
+Die fibonacci-Reihe, man übergibt die Anzahl der Runden die die Reihe
+durchlaufen soll und erhält die n-te zahl der Reihe. fibonacci' ist dann blos eine Hilfsfunktion
+-}
+fibonacci :: Int -> Int
+fibonacci r = fibonacci' 1 1 r
+
+fibonacci' :: Int -> Int -> Int -> Int
+fibonacci' _ b 0 = b
+fibonacci' a b r =  fibonacci' b (a + b) (r - 1)
+
+{-
+Die fibonacci-Reihe, man übergibt die Anzahl der Runden die die Reihe
+durchlaufen soll und erhält eine Liste mit allen fibonacci zahlen bis
+zur angegebenen Runde. fibonacciList' ist nur eine Hilfsfunktion
+-}
+fibonacciList :: Int -> [Int]
+fibonacciList r = [1] ++ fibonacciList' 1 1 r
+
+fibonacciList' :: Int -> Int -> Int -> [Int]
+fibonacciList' _ b 0 = [b]
+fibonacciList' a b r = [b] ++ fibonacciList' b (a + b) (r -1)
