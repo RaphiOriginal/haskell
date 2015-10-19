@@ -22,3 +22,22 @@ countUp n = countUp (n - 1) ++ [n]
 countDownUp :: Int -> [Int]
 countDownUp 0 = [0]
 countDownUp n = [n] ++ countDownUp (n - 1) ++ [n]
+
+-- Arbeitsblatt 2
+
+-- Aufgabe 1
+len :: [a] -> Int
+len [] = 0
+len (x:xs) = 1 + len xs
+
+-- Aufgabe 2
+allTrue :: [Bool] -> Bool
+allTrue [] = True
+allTrue (True:xs) = allTrue xs
+allTrue (False:xs) = False
+
+-- Aufgabe 3
+sublist :: Int -> Int -> [a] -> [a]
+sublist 0 0 a = a
+sublist 0 x as = sublist 0 (x-1) as
+sublist x y a:as = sublist (x-a) y as
