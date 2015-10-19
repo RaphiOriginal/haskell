@@ -9,8 +9,8 @@ Präzendenz : Operator
 6          : (+) links; (-) links;
 5          : (:) rechts; (++) rechts; 
 4          : (==); (/=); (<=); (>=); (>); (<); 
-3          : 
-2          : (||) rechts; (&&) rechts;
+3          : (&&) rechts;
+2          : (||) rechts;
 1          : 
 -}
 --b)
