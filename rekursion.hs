@@ -38,6 +38,14 @@ allTrue (False:xs) = False
 
 -- Aufgabe 3
 sublist :: Int -> Int -> [a] -> [a]
-sublist 0 0 a = a
-sublist 0 x as = sublist 0 (x-1) as
-sublist x y a:as = sublist (x-a) y as
+sublist 0 x as = sublist' (x) [] as
+sublist x y (a:as) = sublist (x-1) y as
+
+sublist' :: Int -> [a] -> [a] -> [a]
+sublist' x y [] = y
+sublist' 0 y _ = y
+sublist' x y (z:zs) = sublist' (x - 1) (y ++ [z]) zs
+
+(+++) :: [a] -> [a] -> [a]
+(+++) [] a = a
+(+++) (x:xs) a =  x : (xs +++ a)
