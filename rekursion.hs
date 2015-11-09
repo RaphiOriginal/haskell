@@ -33,11 +33,16 @@ len (x:xs) = 1 + len xs
 -- Aufgabe 2
 allTrue :: [Bool] -> Bool
 allTrue [] = True
-allTrue (True:xs) = allTrue xs
-allTrue (False:xs) = False
+allTrue (x:xs) = x && allTrue xs
 
 -- Aufgabe 3
 sublist :: Int -> Int -> [a] -> [a]
+sublist _ 0 _ = []
+sublist _ _ [] = error "need more chars from enpty list"
+sublist 0 b (x:xs) = x : sublist 0 (b-1) xs
+sublist a b (_:xs) sublist (a-1) b xs
+
+{-
 sublist 0 x as = sublist' (x) [] as
 sublist x y (a:as) = sublist (x-1) y as
 
@@ -45,7 +50,12 @@ sublist' :: Int -> [a] -> [a] -> [a]
 sublist' x y [] = y
 sublist' 0 y _ = y
 sublist' x y (z:zs) = sublist' (x - 1) (y ++ [z]) zs
+-}
 
 (+++) :: [a] -> [a] -> [a]
 (+++) [] a = a
 (+++) (x:xs) a =  x : (xs +++ a)
+
+(++++) :: [a] -> [a] -> [a]
+[] ++++ as = as
+(x:xs) ++++ as = x : (xs ++++ as)

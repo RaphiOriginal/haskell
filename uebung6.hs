@@ -23,6 +23,7 @@ maxl [2, 5, 1]				-- using m1
 -- Aufgabe 2
 --a)
 reverse' :: [a] -> [a]
+reverse' [] = []
 reverse' (x:[]) = [x]  -- r0
 reverse' (a:as) = reverse' as ++ [a] -- r1
 
