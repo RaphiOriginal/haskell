@@ -8,4 +8,6 @@ safeTail (a:as) = Just as
 
 safeMax:: (Ord a) => [a] -> Maybe a
 safeMax [] = Nothing
-safeMax (a:as) = 
+safeMax (x:[]) = Just x
+safeMax (a:b:as) | a > b = safeMax (a:as)
+                 | otherwise = safeMax (b:as) 
