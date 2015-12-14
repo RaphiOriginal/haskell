@@ -1,5 +1,6 @@
 import System.IO
 import System.Directory
+import System.Exit
 
 type Task = (Bool,String)
 type TaskList = [Task]
@@ -24,7 +25,7 @@ loop = do
       else
         let (cmd:args) = input
         in do dispatch cmd (unwords args)
-              if not (quit cmd) then loop else bye
+              loop
 
 dispatch :: String -> String -> IO ()
 dispatch "list"   _  = listTasksAction taskFile
@@ -32,14 +33,8 @@ dispatch "add"    t  = addTaskAction taskFile t
 dispatch "done"   nr = markDoneAction taskFile $ read nr
 dispatch "rm"     nr = removeTaskAction taskFile $ read nr
 dispatch "help"   _  = help
+dispatch "quit"   _  = exitSuccess
 dispatch _        _  = return()
-
-quit :: String -> Bool
-quit "quit" = True
-quit _ = False
-
-bye :: IO ()
-bye = putStr "Bye!\n"
 
 help :: IO ()
 help = do putStr "add a new Task: list Task\n"
