@@ -17,6 +17,4 @@ b3 = map toUpper $ filter (not.isSpace) "abc def"
 fs = [(+1),(*3),(/2)]
 ns = [1, 2, 3]
 
-magicFunction [] _ = []
-magicFunction _ [] = []
-magicFunction (f:fs) (n:ns) = f (fromIntegral n) : magicFunction fs ns
+zipWith ($) fs ns
